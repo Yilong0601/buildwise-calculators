@@ -87,6 +87,7 @@ export function CalculatorTool({ tool }: { tool: ToolKey }) {
                 <span className="input-wrap">
                   <input
                     type="number"
+                    inputMode="decimal"
                     value={values[field.key] ?? 0}
                     min={field.min}
                     step={field.step ?? 1}
@@ -121,9 +122,13 @@ export function CalculatorTool({ tool }: { tool: ToolKey }) {
             Enter all prices in the selected currency. No exchange-rate service
             is used.
           </p>
+          <a className="mobile-estimate-link" href="#estimate">
+            View estimate
+            <span aria-hidden="true">↓</span>
+          </a>
         </div>
 
-        <aside className="result-panel" aria-live="polite">
+        <aside className="result-panel" id="estimate" aria-live="polite">
           <div className="result-heading">
             <span className="panel-step">02</span>
             <p>Your estimate</p>
