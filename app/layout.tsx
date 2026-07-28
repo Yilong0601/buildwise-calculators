@@ -13,15 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BuildWise Calculators — Plan Materials With Confidence",
+  title: "BuildWise Calculators",
   description:
     "Free paint, tile, flooring, concrete, and project cost calculators with metric and imperial units.",
   other: {
     "codex-preview": "development",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/favicon-bw.svg",
+    shortcut: "/favicon-bw.svg",
   },
 };
 
