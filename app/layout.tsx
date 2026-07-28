@@ -13,9 +13,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BuildWise Calculators",
+  metadataBase: new URL("https://buildwisecalc.com"),
+  title: {
+    default: "BuildWise Calculators",
+    template: "%s | BuildWise",
+  },
   description:
-    "Free paint, tile, flooring, concrete, and project cost calculators with metric and imperial units.",
+    "Free project planning calculators for paint, tile, flooring, concrete, and cost. Practical purchase quantities, transparent formulas, and no signup.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "BuildWise Calculators",
+    title: "BuildWise Calculators",
+    description:
+      "Simple, transparent material and project cost calculators with practical purchase quantities.",
+  },
   other: {
     "codex-preview": "development",
   },
