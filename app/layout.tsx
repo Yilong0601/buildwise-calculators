@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | BuildWise",
   },
   description:
-    "Free project planning calculators for paint, tile, flooring, concrete, and cost. Practical purchase quantities, transparent formulas, and no signup.",
+    "Free project planning calculators for building, landscaping, and renovation materials. Practical purchase quantities, transparent formulas, and no signup.",
   alternates: {
     canonical: "/",
   },
