@@ -598,6 +598,65 @@ h1 em {
   font-weight: 900;
 }
 
+.tool-icon-gravel::before {
+  inset: 12px 8px 9px;
+  border-bottom: 3px solid var(--forest);
+  border-radius: 45% 45% 20% 20%;
+  background:
+    radial-gradient(circle at 22% 58%, var(--terracotta) 0 3px, transparent 3.5px),
+    radial-gradient(circle at 50% 32%, var(--forest) 0 3px, transparent 3.5px),
+    radial-gradient(circle at 74% 62%, var(--sage) 0 4px, transparent 4.5px);
+}
+
+.tool-icon-drywall::before {
+  inset: 9px 12px;
+  border: 2px solid var(--forest);
+  background:
+    linear-gradient(90deg, transparent 48%, var(--forest) 49% 52%, transparent 53%),
+    linear-gradient(transparent 48%, var(--forest) 49% 52%, transparent 53%);
+}
+
+.tool-icon-roofing::before {
+  width: 30px;
+  height: 22px;
+  left: 10px;
+  top: 15px;
+  border-top: 4px solid var(--forest);
+  border-left: 4px solid var(--forest);
+  transform: rotate(45deg) skew(-8deg, -8deg);
+}
+
+.tool-icon-mulch::before {
+  width: 26px;
+  height: 17px;
+  left: 12px;
+  top: 18px;
+  border: 2px solid var(--forest);
+  border-radius: 50% 8px 50% 8px;
+  background: var(--sage);
+  transform: rotate(-18deg);
+}
+
+.tool-icon-mulch::after {
+  width: 20px;
+  height: 2px;
+  left: 16px;
+  top: 27px;
+  background: var(--forest);
+  transform: rotate(-35deg);
+}
+
+.tool-icon-decking::before {
+  inset: 12px 8px;
+  border: 2px solid var(--forest);
+  transform: skewY(-12deg);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--terracotta) 0 5px,
+    transparent 6px 9px
+  );
+}
+
 .tool-name {
   align-self: end;
   font-size: 15px;
