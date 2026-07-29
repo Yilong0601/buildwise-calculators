@@ -1,4 +1,14 @@
-export type ToolKey = "paint" | "tile" | "flooring" | "concrete" | "cost";
+export type ToolKey =
+  | "paint"
+  | "tile"
+  | "flooring"
+  | "concrete"
+  | "cost"
+  | "gravel"
+  | "drywall"
+  | "roofing"
+  | "mulch"
+  | "decking";
 export type UnitSystem = "imperial" | "metric";
 
 export type Field = {
@@ -245,6 +255,217 @@ export const tools: ToolSpec[] = [
       },
     ],
   },
+  {
+    id: "gravel",
+    slug: "gravel-calculator",
+    name: "Gravel",
+    icon: "gravel",
+    detail: "Driveways & paths",
+    summary:
+      "Estimate gravel volume, weight, full bag quantity, and material cost for driveways, paths, and landscape bases.",
+    seoTitle: "Free Gravel Calculator — Tons, Bags & Cost",
+    seoDescription:
+      "Calculate gravel volume, tons or tonnes, full bags, and estimated cost from area, depth, density, and waste allowance.",
+    formulaTitle: "How the gravel estimate works",
+    formulas: [
+      "Gravel volume = area length × area width × gravel depth",
+      "Adjusted volume = gravel volume × (1 + extra allowance %)",
+      "Gravel weight = adjusted volume × material density",
+      "Full bags = gravel weight ÷ bag weight, rounded up",
+    ],
+    example:
+      "A 12 × 10 ft area at 3 in deep is 30 cubic feet before extra allowance. With 10% extra and gravel at 100 lb per cubic foot, the estimate is about 1.65 short tons or 66 full 50 lb bags.",
+    tips: [
+      "Measure compacted depth, then allow for settlement and an uneven base.",
+      "Replace the default density with a supplier value when available.",
+      "Bulk delivery is usually more practical than bags for larger areas.",
+    ],
+    faqs: [
+      {
+        question: "How deep should gravel be?",
+        answer:
+          "Depth depends on the project and base conditions. Decorative paths may use a shallower layer than driveways, which commonly require a prepared base and multiple material layers.",
+      },
+      {
+        question: "How much does a cubic yard of gravel weigh?",
+        answer:
+          "Weight varies by stone size, moisture, and compaction. A common planning range is roughly 1.3–1.5 short tons per cubic yard, but supplier values are more reliable.",
+      },
+      {
+        question: "Does the calculator include compaction?",
+        answer:
+          "Use the extra allowance field to cover compaction, settlement, and minor grade variation. Confirm the final order with the material supplier.",
+      },
+    ],
+  },
+  {
+    id: "drywall",
+    slug: "drywall-calculator",
+    name: "Drywall",
+    icon: "drywall",
+    detail: "Walls & ceilings",
+    summary:
+      "Calculate drywall surface area, complete sheet quantity, waste allowance, and estimated sheet cost for a room.",
+    seoTitle: "Free Drywall Calculator — Sheets, Waste & Cost",
+    seoDescription:
+      "Estimate full drywall sheets and cost for room walls and ceilings, including openings, sheet size, and waste allowance.",
+    formulaTitle: "How the drywall estimate works",
+    formulas: [
+      "Wall area = 2 × (room length + room width) × wall height − openings",
+      "Total board area = wall area + optional ceiling area",
+      "Required sheets = total board area × (1 + waste %) ÷ sheet area, rounded up",
+    ],
+    example:
+      "A 12 × 10 × 8 ft room has 352 sq ft of wall area before openings. Subtract 51 sq ft of doors and windows, add a 120 sq ft ceiling, and allow 10% waste. Using 4 × 8 ft sheets, the purchase quantity rounds up to 15 sheets.",
+    tips: [
+      "Enter zero for ceiling area when only the walls will be covered.",
+      "Choose a sheet size that fits the framing and can be safely handled.",
+      "Complex ceilings, short offcuts, and many openings can require more waste.",
+    ],
+    faqs: [
+      {
+        question: "How many drywall sheets do I need?",
+        answer:
+          "Divide the adjusted wall and ceiling area by one sheet’s area, then round up. This calculator performs that step using your selected sheet dimensions.",
+      },
+      {
+        question: "Should I subtract doors and windows?",
+        answer:
+          "Yes for a tighter estimate. On small projects, leaving part of the opening area in the estimate can provide useful offcuts and repair stock.",
+      },
+      {
+        question: "What waste allowance should I use?",
+        answer:
+          "Ten percent is a practical starting point for a simple room. Irregular layouts, many corners, and difficult handling may need more.",
+      },
+    ],
+  },
+  {
+    id: "roofing",
+    slug: "roofing-calculator",
+    name: "Roofing",
+    icon: "roofing",
+    detail: "Shingles & bundles",
+    summary:
+      "Estimate sloped roof area, waste-adjusted coverage, full shingle bundles, roofing squares, and material cost.",
+    seoTitle: "Free Roofing Calculator — Shingles, Bundles & Cost",
+    seoDescription:
+      "Calculate roof area, shingle bundles, roofing squares, waste, and estimated material cost using plan dimensions and roof pitch.",
+    formulaTitle: "How the roofing estimate works",
+    formulas: [
+      "Sloped roof area = plan length × plan width ÷ cos(pitch angle)",
+      "Target coverage = sloped roof area × (1 + waste %)",
+      "Full bundles = target coverage ÷ coverage per bundle, rounded up",
+    ],
+    example:
+      "A 40 × 24 ft roof footprint at a 22.6° pitch has roughly 1,040 sq ft of sloped area. With 12% waste and 32.3 sq ft per bundle, the estimate rounds up to 37 bundles.",
+    tips: [
+      "Use the total horizontal roof footprint, including overhangs.",
+      "Hip roofs, valleys, dormers, and complex cuts generally need more waste.",
+      "Confirm bundle coverage and required underlayment with the product manufacturer.",
+    ],
+    faqs: [
+      {
+        question: "What is a roofing square?",
+        answer:
+          "In US roofing, one roofing square equals 100 square feet of roof surface. It is a measurement of area, not a square-shaped bundle.",
+      },
+      {
+        question: "Does roof pitch increase material quantity?",
+        answer:
+          "Yes. A sloped roof has more surface area than its flat plan footprint. The calculator uses the pitch angle to account for that increase.",
+      },
+      {
+        question: "How much roofing waste should I add?",
+        answer:
+          "Simple gable roofs may use about 10%. Roofs with hips, valleys, dormers, or intricate cuts often require a higher allowance.",
+      },
+    ],
+  },
+  {
+    id: "mulch",
+    slug: "mulch-calculator",
+    name: "Mulch",
+    icon: "mulch",
+    detail: "Beds & borders",
+    summary:
+      "Find mulch volume, full bag quantity, bulk order volume, and estimated bag or bulk material cost.",
+    seoTitle: "Free Mulch Calculator — Bags, Volume & Cost",
+    seoDescription:
+      "Estimate mulch bags, cubic yards or metres, depth, extra allowance, and material cost for garden beds and borders.",
+    formulaTitle: "How the mulch estimate works",
+    formulas: [
+      "Mulch volume = bed length × bed width × mulch depth",
+      "Adjusted volume = mulch volume × (1 + extra allowance %)",
+      "Full bags = adjusted volume ÷ volume per bag, rounded up",
+    ],
+    example:
+      "A 20 × 8 ft garden bed at 3 in deep needs 40 cubic feet before extra allowance. With 5% extra and 2 cubic foot bags, the purchase quantity is 21 bags, or about 1.56 cubic yards.",
+    tips: [
+      "Measure irregular beds as several rectangles and add their results.",
+      "Use the bag volume printed on the product, not the bag’s outside dimensions.",
+      "Avoid piling mulch against trunks, stems, siding, or drainage openings.",
+    ],
+    faqs: [
+      {
+        question: "How deep should mulch be?",
+        answer:
+          "A 2–3 inch layer is a common planning range for many landscape beds, but plant type, existing mulch, drainage, and local conditions should guide the depth.",
+      },
+      {
+        question: "How many bags are in one cubic yard?",
+        answer:
+          "One cubic yard is 27 cubic feet, so it equals about fourteen 2-cubic-foot bags or nine 3-cubic-foot bags after rounding up.",
+      },
+      {
+        question: "Should I add extra mulch?",
+        answer:
+          "A small allowance can cover uneven beds, settlement, and measurement error. Avoid excessive depth around plants and structures.",
+      },
+    ],
+  },
+  {
+    id: "decking",
+    slug: "decking-calculator",
+    name: "Decking",
+    icon: "decking",
+    detail: "Boards & coverage",
+    summary:
+      "Estimate deck surface area, board rows, total linear length, full board quantity, waste, and material cost.",
+    seoTitle: "Free Decking Calculator — Boards, Waste & Cost",
+    seoDescription:
+      "Calculate decking boards, rows, linear length, waste, and estimated material cost from deck and board dimensions.",
+    formulaTitle: "How the decking estimate works",
+    formulas: [
+      "Board rows = deck width ÷ (board width + board gap), rounded up",
+      "Linear decking = board rows × deck length × (1 + waste %)",
+      "Full boards = linear decking ÷ board length, rounded up",
+    ],
+    example:
+      "A 16 × 12 ft deck using 5.5 in boards with a 0.25 in gap needs about 26 rows. With 10% waste and 16 ft boards, the estimate rounds up to 29 full boards.",
+    tips: [
+      "Enter the actual face width of the board, not its nominal product name.",
+      "Board direction, breaker boards, picture frames, and staggered joints affect layout.",
+      "Calculate stairs, fascia, railings, framing, and fasteners separately.",
+    ],
+    faqs: [
+      {
+        question: "Does the calculator include board gaps?",
+        answer:
+          "Yes. The board-row estimate uses both the actual board width and the installation gap you enter.",
+      },
+      {
+        question: "How much decking waste should I allow?",
+        answer:
+          "Ten percent is a useful starting point for a simple rectangular deck. Diagonal boards, picture framing, and complex cuts usually need more.",
+      },
+      {
+        question: "Does this calculate deck framing?",
+        answer:
+          "No. It estimates surface decking boards only. Joists, beams, posts, footings, stairs, railing, fascia, and fasteners require separate planning.",
+      },
+    ],
+  },
 ];
 
 export const toolById = Object.fromEntries(
@@ -300,6 +521,53 @@ export const defaults: Record<
       contingency: 5,
       tax: 7,
     },
+    gravel: {
+      length: 12,
+      width: 10,
+      depth: 3,
+      waste: 10,
+      density: 100,
+      bagSize: 50,
+      bagCost: 5.5,
+      bulkCost: 55,
+    },
+    drywall: {
+      length: 12,
+      width: 10,
+      height: 8,
+      openingArea: 51,
+      ceilingArea: 120,
+      sheetWidth: 4,
+      sheetHeight: 8,
+      waste: 10,
+      sheetCost: 16,
+    },
+    roofing: {
+      length: 40,
+      width: 24,
+      pitchAngle: 22.6,
+      waste: 12,
+      bundleCoverage: 32.3,
+      bundleCost: 38,
+    },
+    mulch: {
+      length: 20,
+      width: 8,
+      depth: 3,
+      waste: 5,
+      bagVolume: 2,
+      bagCost: 4.5,
+      bulkCost: 48,
+    },
+    decking: {
+      length: 16,
+      width: 12,
+      boardWidth: 5.5,
+      gap: 0.25,
+      boardLength: 16,
+      waste: 10,
+      boardCost: 28,
+    },
   },
   metric: {
     paint: {
@@ -345,6 +613,53 @@ export const defaults: Record<
       delivery: 90,
       contingency: 5,
       tax: 7,
+    },
+    gravel: {
+      length: 3.6,
+      width: 3,
+      depth: 8,
+      waste: 10,
+      density: 1600,
+      bagSize: 20,
+      bagCost: 5,
+      bulkCost: 60,
+    },
+    drywall: {
+      length: 3.6,
+      width: 3,
+      height: 2.4,
+      openingArea: 4.75,
+      ceilingArea: 10.8,
+      sheetWidth: 1.2,
+      sheetHeight: 2.4,
+      waste: 10,
+      sheetCost: 15,
+    },
+    roofing: {
+      length: 12,
+      width: 7.2,
+      pitchAngle: 22.6,
+      waste: 12,
+      bundleCoverage: 3,
+      bundleCost: 36,
+    },
+    mulch: {
+      length: 6,
+      width: 2.4,
+      depth: 7.5,
+      waste: 5,
+      bagVolume: 50,
+      bagCost: 5,
+      bulkCost: 52,
+    },
+    decking: {
+      length: 4.8,
+      width: 3.6,
+      boardWidth: 140,
+      gap: 6,
+      boardLength: 4.8,
+      waste: 10,
+      boardCost: 26,
     },
   },
 };
@@ -402,6 +717,58 @@ export function fieldsFor(tool: ToolKey, unit: UnitSystem): Field[] {
         { key: "delivery", label: "Delivery & fixed costs", min: 0, step: 0.01 },
         { key: "contingency", label: "Contingency", suffix: "%", min: 0, step: 0.1 },
         { key: "tax", label: "Tax rate", suffix: "%", min: 0, step: 0.1 },
+      ];
+    case "gravel":
+      return [
+        { key: "length", label: "Area length", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "width", label: "Area width", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "depth", label: "Gravel depth", suffix: unit === "imperial" ? "in" : "cm", min: 0, step: 0.1 },
+        { key: "waste", label: "Extra allowance", suffix: "%", min: 0, step: 1 },
+        { key: "density", label: "Gravel density", suffix: unit === "imperial" ? "lb/ft³" : "kg/m³", min: 1, step: 1 },
+        { key: "bagSize", label: "Weight per bag", suffix: unit === "imperial" ? "lb" : "kg", min: 0.1, step: 0.1 },
+        { key: "bagCost", label: "Cost per bag", min: 0, step: 0.01 },
+        { key: "bulkCost", label: "Bulk cost", suffix: unit === "imperial" ? "per ton" : "per tonne", min: 0, step: 0.01 },
+      ];
+    case "drywall":
+      return [
+        { key: "length", label: "Room length", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "width", label: "Room width", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "height", label: "Wall height", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "openingArea", label: "Doors & windows", suffix: areaUnit, min: 0, step: 0.1 },
+        { key: "ceilingArea", label: "Ceiling area (optional)", suffix: areaUnit, min: 0, step: 0.1 },
+        { key: "sheetWidth", label: "Sheet width", suffix: lengthUnit, min: 0.1, step: 0.1 },
+        { key: "sheetHeight", label: "Sheet length", suffix: lengthUnit, min: 0.1, step: 0.1 },
+        { key: "waste", label: "Waste allowance", suffix: "%", min: 0, step: 1 },
+        { key: "sheetCost", label: "Cost per sheet", min: 0, step: 0.01 },
+      ];
+    case "roofing":
+      return [
+        { key: "length", label: "Roof plan length", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "width", label: "Roof plan width", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "pitchAngle", label: "Roof pitch angle", suffix: "degrees", min: 0, step: 0.1 },
+        { key: "waste", label: "Waste allowance", suffix: "%", min: 0, step: 1 },
+        { key: "bundleCoverage", label: "Coverage per bundle", suffix: areaUnit, min: 0.01, step: 0.01 },
+        { key: "bundleCost", label: "Cost per bundle", min: 0, step: 0.01 },
+      ];
+    case "mulch":
+      return [
+        { key: "length", label: "Bed length", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "width", label: "Bed width", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "depth", label: "Mulch depth", suffix: unit === "imperial" ? "in" : "cm", min: 0, step: 0.1 },
+        { key: "waste", label: "Extra allowance", suffix: "%", min: 0, step: 1 },
+        { key: "bagVolume", label: "Volume per bag", suffix: unit === "imperial" ? "ft³" : "L", min: 0.01, step: 0.01 },
+        { key: "bagCost", label: "Cost per bag", min: 0, step: 0.01 },
+        { key: "bulkCost", label: "Bulk cost", suffix: unit === "imperial" ? "per yd³" : "per m³", min: 0, step: 0.01 },
+      ];
+    case "decking":
+      return [
+        { key: "length", label: "Deck length", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "width", label: "Deck width", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "boardWidth", label: "Actual board width", suffix: unit === "imperial" ? "in" : "mm", min: 0.1, step: 0.1 },
+        { key: "gap", label: "Board gap", suffix: unit === "imperial" ? "in" : "mm", min: 0, step: 0.01 },
+        { key: "boardLength", label: "Board length", suffix: lengthUnit, min: 0.1, step: 0.1 },
+        { key: "waste", label: "Waste allowance", suffix: "%", min: 0, step: 1 },
+        { key: "boardCost", label: "Cost per board", min: 0, step: 0.01 },
       ];
   }
 }
@@ -523,6 +890,164 @@ export function calculate(
       ],
       note:
         "Bag yield and supplier minimums vary. Confirm structural work and delivery quantities with the supplier.",
+    };
+  }
+
+  if (tool === "gravel") {
+    if (unit === "imperial") {
+      const cubicFeet =
+        (v.length || 0) *
+        (v.width || 0) *
+        ((v.depth || 0) / 12) *
+        factor;
+      const pounds = cubicFeet * Math.max(v.density || 1, 1);
+      const tons = pounds / 2000;
+      const bags = Math.ceil(pounds / Math.max(v.bagSize || 0.1, 0.1));
+      return {
+        label: "Gravel required",
+        primary: `${format(tons, 2)} tons`,
+        stats: [
+          ["Adjusted volume", `${format(cubicFeet, 2)} ft³`],
+          ["Full bags", `${bags} bags · ${currency} ${format(bags * (v.bagCost || 0), 2)}`],
+          ["Bulk material estimate", `${currency} ${format(tons * (v.bulkCost || 0), 2)}`],
+        ],
+        note:
+          "Gravel density changes with stone type, moisture, and compaction. Use a supplier value when available.",
+      };
+    }
+    const cubicMetres =
+      (v.length || 0) *
+      (v.width || 0) *
+      ((v.depth || 0) / 100) *
+      factor;
+    const kilograms = cubicMetres * Math.max(v.density || 1, 1);
+    const tonnes = kilograms / 1000;
+    const bags = Math.ceil(kilograms / Math.max(v.bagSize || 0.1, 0.1));
+    return {
+      label: "Gravel required",
+      primary: `${format(tonnes, 2)} tonnes`,
+      stats: [
+        ["Adjusted volume", `${format(cubicMetres, 3)} m³`],
+        ["Full bags", `${bags} bags · ${currency} ${format(bags * (v.bagCost || 0), 2)}`],
+        ["Bulk material estimate", `${currency} ${format(tonnes * (v.bulkCost || 0), 2)}`],
+      ],
+      note:
+        "Gravel density changes with stone type, moisture, and compaction. Use a supplier value when available.",
+    };
+  }
+
+  if (tool === "drywall") {
+    const wallArea = Math.max(
+      0,
+      2 * ((v.length || 0) + (v.width || 0)) * (v.height || 0) -
+        (v.openingArea || 0),
+    );
+    const boardArea = wallArea + Math.max(v.ceilingArea || 0, 0);
+    const sheetArea =
+      Math.max(v.sheetWidth || 0.1, 0.1) *
+      Math.max(v.sheetHeight || 0.1, 0.1);
+    const sheets = Math.ceil((boardArea * factor) / sheetArea);
+    return {
+      label: "Drywall required",
+      primary: `${sheets} sheets`,
+      stats: [
+        ["Board surface area", `${format(boardArea)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Adjusted coverage", `${format(boardArea * factor)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Estimated sheet cost", `${currency} ${format(sheets * (v.sheetCost || 0), 2)}`],
+      ],
+      note:
+        "Sheet layout, framing direction, offcuts, and safe handling can change the practical quantity.",
+    };
+  }
+
+  if (tool === "roofing") {
+    const planArea = (v.length || 0) * (v.width || 0);
+    const radians = Math.min(Math.max(v.pitchAngle || 0, 0), 80) * (Math.PI / 180);
+    const roofArea = planArea / Math.max(Math.cos(radians), 0.01);
+    const targetCoverage = roofArea * factor;
+    const bundles = Math.ceil(
+      targetCoverage / Math.max(v.bundleCoverage || 0.01, 0.01),
+    );
+    return {
+      label: "Shingle bundles required",
+      primary: `${bundles} bundles`,
+      stats: [
+        [
+          unit === "imperial" ? "Roofing squares" : "Sloped roof area",
+          unit === "imperial"
+            ? `${format(roofArea / 100, 2)} squares`
+            : `${format(roofArea, 2)} m²`,
+        ],
+        ["Adjusted coverage", `${format(targetCoverage)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Estimated material cost", `${currency} ${format(bundles * (v.bundleCost || 0), 2)}`],
+      ],
+      note:
+        "This is a surface-material estimate. Underlayment, flashing, ridge caps, starter strips, and structure are separate.",
+    };
+  }
+
+  if (tool === "mulch") {
+    if (unit === "imperial") {
+      const cubicFeet =
+        (v.length || 0) *
+        (v.width || 0) *
+        ((v.depth || 0) / 12) *
+        factor;
+      const cubicYards = cubicFeet / 27;
+      const bags = Math.ceil(cubicFeet / Math.max(v.bagVolume || 0.01, 0.01));
+      return {
+        label: "Mulch required",
+        primary: `${bags} bags`,
+        stats: [
+          ["Bulk volume", `${format(cubicYards, 2)} yd³`],
+          ["Bag material cost", `${currency} ${format(bags * (v.bagCost || 0), 2)}`],
+          ["Bulk material estimate", `${currency} ${format(cubicYards * (v.bulkCost || 0), 2)}`],
+        ],
+        note:
+          "Bag volume and recommended depth vary by product and planting conditions. Check the label before buying.",
+      };
+    }
+    const cubicMetres =
+      (v.length || 0) *
+      (v.width || 0) *
+      ((v.depth || 0) / 100) *
+      factor;
+    const litres = cubicMetres * 1000;
+    const bags = Math.ceil(litres / Math.max(v.bagVolume || 0.01, 0.01));
+    return {
+      label: "Mulch required",
+      primary: `${bags} bags`,
+      stats: [
+        ["Bulk volume", `${format(cubicMetres, 2)} m³`],
+        ["Bag material cost", `${currency} ${format(bags * (v.bagCost || 0), 2)}`],
+        ["Bulk material estimate", `${currency} ${format(cubicMetres * (v.bulkCost || 0), 2)}`],
+      ],
+      note:
+        "Bag volume and recommended depth vary by product and planting conditions. Check the label before buying.",
+    };
+  }
+
+  if (tool === "decking") {
+    const widthInBoardUnits =
+      unit === "imperial" ? (v.width || 0) * 12 : (v.width || 0) * 1000;
+    const moduleWidth =
+      Math.max(v.boardWidth || 0.1, 0.1) + Math.max(v.gap || 0, 0);
+    const rows = Math.ceil(widthInBoardUnits / moduleWidth);
+    const linearLength = rows * (v.length || 0) * factor;
+    const boards = Math.ceil(
+      linearLength / Math.max(v.boardLength || 0.1, 0.1),
+    );
+    const area = (v.length || 0) * (v.width || 0);
+    return {
+      label: "Decking boards required",
+      primary: `${boards} boards`,
+      stats: [
+        ["Deck area", `${format(area)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Board rows & linear length", `${rows} rows · ${format(linearLength)} ${unit === "imperial" ? "linear ft" : "linear m"}`],
+        ["Estimated board cost", `${currency} ${format(boards * (v.boardCost || 0), 2)}`],
+      ],
+      note:
+        "This estimates surface boards only. Framing, fascia, stairs, railings, fasteners, and special border layouts are separate.",
     };
   }
 
