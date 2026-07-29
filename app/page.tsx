@@ -20,8 +20,8 @@ export default function Home() {
             Build with <em>confidence.</em>
           </h1>
           <p className="hero-lede">
-            Clear calculators for paint, tile, flooring, concrete, and project
-            costs. See practical purchase quantities, not just theoretical
+            Clear calculators for building, landscaping, and renovation
+            materials. See practical purchase quantities, not just theoretical
             measurements.
           </p>
           <a className="primary-button" href="#calculators">
@@ -73,12 +73,14 @@ export default function Home() {
       >
         <div className="section-kicker">
           <p id="tools-title">Choose your calculator</p>
-          <span>Five focused tools with formulas, examples, and practical totals</span>
+          <span>Ten focused tools with formulas, examples, and practical totals</span>
         </div>
         <div className="tool-grid">
           {tools.map((tool, index) => (
             <a className="tool-card" href={`/${tool.slug}`} key={tool.id}>
-              <span className="tool-number">0{index + 1}</span>
+              <span className="tool-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <ToolIcon type={tool.icon} />
               <span className="tool-name">{tool.name}</span>
               <span className="tool-detail">{tool.detail}</span>
