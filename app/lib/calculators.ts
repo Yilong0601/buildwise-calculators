@@ -8,7 +8,12 @@ export type ToolKey =
   | "drywall"
   | "roofing"
   | "mulch"
-  | "decking";
+  | "decking"
+  | "brick"
+  | "fence"
+  | "insulation"
+  | "wallpaper"
+  | "stair";
 export type UnitSystem = "imperial" | "metric";
 
 export type Field = {
@@ -466,6 +471,216 @@ export const tools: ToolSpec[] = [
       },
     ],
   },
+  {
+    id: "brick",
+    slug: "brick-calculator",
+    name: "Brick",
+    icon: "brick",
+    detail: "Walls & masonry",
+    summary:
+      "Estimate brick quantity, mortar-joint allowance, waste, and material cost for a rectangular wall.",
+    seoTitle: "Free Brick Calculator — Bricks, Waste & Cost",
+    seoDescription:
+      "Calculate how many bricks you need for a wall using wall size, openings, brick dimensions, mortar joints, waste, and unit cost.",
+    formulaTitle: "How the brick estimate works",
+    formulas: [
+      "Net wall area = wall length × wall height − openings",
+      "Modular brick area = (brick length + joint) × (brick height + joint)",
+      "Bricks required = net wall area × (1 + waste %) ÷ modular brick area, rounded up",
+    ],
+    example:
+      "A 20 × 8 ft wall with 24 sq ft of openings, standard 7.625 × 2.25 in bricks, a 0.375 in mortar joint, and 10% waste needs roughly 1,030 bricks.",
+    tips: [
+      "Use the actual brick dimensions and planned mortar-joint thickness.",
+      "Subtract doors, windows, and large openings for a tighter estimate.",
+      "Corners, cuts, breakage, and matching an existing bond may require more waste.",
+    ],
+    faqs: [
+      {
+        question: "Does the estimate include mortar joints?",
+        answer:
+          "Yes. Brick length and height are combined with the joint thickness to estimate the modular face area.",
+      },
+      {
+        question: "How much extra brick should I order?",
+        answer:
+          "Ten percent is a practical starting point. Complex bonds, many cuts, fragile brick, or future repair stock may need more.",
+      },
+      {
+        question: "Does this calculate mortar?",
+        answer:
+          "No. Mortar quantity depends on brick type, joint profile, wall thickness, and installation method and should be estimated separately.",
+      },
+    ],
+  },
+  {
+    id: "fence",
+    slug: "fence-calculator",
+    name: "Fence",
+    icon: "fence",
+    detail: "Panels & posts",
+    summary:
+      "Estimate full fence panels, posts, gate openings, waste allowance, and basic material cost.",
+    seoTitle: "Free Fence Calculator — Panels, Posts & Cost",
+    seoDescription:
+      "Estimate fence panels, posts, gate allowance, waste, and material cost from total run length and panel spacing.",
+    formulaTitle: "How the fence estimate works",
+    formulas: [
+      "Net fence run = total run − (gate width × gate count)",
+      "Panel count = net fence run ÷ panel width × (1 + waste %), rounded up",
+      "Post count = panel count + 1 + gate count",
+    ],
+    example:
+      "A 120 ft run with one 4 ft gate and 8 ft panels needs 15 panels before waste. With 5% waste, the purchase quantity rounds up to 16 panels and about 18 posts.",
+    tips: [
+      "Measure each straight run separately when the fence has corners or changes direction.",
+      "Gate posts, end posts, corner posts, and slope transitions may require different hardware.",
+      "Confirm panel width and post spacing with the actual product system.",
+    ],
+    faqs: [
+      {
+        question: "How many fence posts do I need?",
+        answer:
+          "For one straight run, a useful starting point is one more post than the number of panels, plus an additional post allowance for gates.",
+      },
+      {
+        question: "Does the calculator include corners?",
+        answer:
+          "No. Calculate separate straight runs and review corner, end, and gate-post requirements for the selected fence system.",
+      },
+      {
+        question: "How much fence waste should I use?",
+        answer:
+          "Five percent is often enough for simple panel systems. Irregular boundaries, slopes, custom cuts, and picket fences may need more.",
+      },
+    ],
+  },
+  {
+    id: "insulation",
+    slug: "insulation-calculator",
+    name: "Insulation",
+    icon: "insulation",
+    detail: "Batts & packages",
+    summary:
+      "Estimate insulation coverage, full packages, purchased area, waste, and material cost.",
+    seoTitle: "Free Insulation Calculator — Batts, Bags & Cost",
+    seoDescription:
+      "Calculate insulation area, full packages, purchased coverage, waste allowance, and material cost for walls or ceilings.",
+    formulaTitle: "How the insulation estimate works",
+    formulas: [
+      "Net surface area = surface length × surface height − openings",
+      "Target coverage = net surface area × (1 + waste %)",
+      "Packages required = target coverage ÷ coverage per package, rounded up",
+    ],
+    example:
+      "A 30 × 8 ft wall with 32 sq ft of openings has 208 sq ft to cover. With 10% waste and 40 sq ft per package, the purchase quantity rounds up to six packages.",
+    tips: [
+      "Use the coverage printed on the actual batt, roll, or bag package.",
+      "Calculate walls, ceilings, and different cavity depths separately.",
+      "Confirm the required R-value, vapor control, and local code before buying.",
+    ],
+    faqs: [
+      {
+        question: "Does this choose the correct R-value?",
+        answer:
+          "No. It estimates quantity only. Required R-value depends on climate, assembly, cavity depth, and local building requirements.",
+      },
+      {
+        question: "Should I subtract windows and doors?",
+        answer:
+          "Yes, when you want a tighter material estimate. Keep a waste allowance for cuts, damaged pieces, and awkward cavities.",
+      },
+      {
+        question: "Can I use it for blown insulation?",
+        answer:
+          "Use the area result as a starting point, then follow the manufacturer’s bag-coverage chart for the target depth and R-value.",
+      },
+    ],
+  },
+  {
+    id: "wallpaper",
+    slug: "wallpaper-calculator",
+    name: "Wallpaper",
+    icon: "wallpaper",
+    detail: "Rolls & pattern repeat",
+    summary:
+      "Estimate wallpaper strips and full rolls using wall size, roll dimensions, pattern repeat, openings, and waste.",
+    seoTitle: "Free Wallpaper Calculator — Rolls & Pattern Repeat",
+    seoDescription:
+      "Calculate wallpaper strips, usable drops per roll, full rolls, waste, and material cost with pattern-repeat allowance.",
+    formulaTitle: "How the wallpaper estimate works",
+    formulas: [
+      "Net wall area = wall width × wall height − openings",
+      "Cut length = wall height rounded up to the next pattern repeat",
+      "Rolls required = strips needed ÷ usable strips per roll × (1 + waste %), rounded up",
+    ],
+    example:
+      "A 24 × 8 ft wall with 20 sq ft of openings, 20.5 in wide wallpaper, a 33 ft roll, and a 21 in pattern repeat needs about five full rolls with a 10% allowance.",
+    tips: [
+      "Use the roll’s printed width, length, and vertical pattern repeat.",
+      "Large repeats and half-drop matches can increase waste substantially.",
+      "Order all rolls from the same dye lot when color matching matters.",
+    ],
+    faqs: [
+      {
+        question: "Why does pattern repeat increase the roll count?",
+        answer:
+          "Each strip must be cut long enough for the pattern to align, leaving an unusable portion at the end of some drops.",
+      },
+      {
+        question: "Should I subtract windows and doors?",
+        answer:
+          "You can subtract large openings, but keep enough allowance for matching, trimming, and strips above or below openings.",
+      },
+      {
+        question: "Does this support double rolls?",
+        answer:
+          "Yes. Enter the total width and length printed on the product, whether the package is described as a single, double, or euro roll.",
+      },
+    ],
+  },
+  {
+    id: "stair",
+    slug: "stair-calculator",
+    name: "Stair",
+    icon: "stair",
+    detail: "Risers & treads",
+    summary:
+      "Plan stair risers, actual rise, tread count, total run, stringer length, and tread cost.",
+    seoTitle: "Free Stair Calculator — Risers, Treads & Run",
+    seoDescription:
+      "Calculate stair risers, actual riser height, treads, total run, approximate stringer length, and tread cost.",
+    formulaTitle: "How the stair estimate works",
+    formulas: [
+      "Riser count = total rise ÷ target riser height, rounded to the nearest practical whole number",
+      "Actual riser height = total rise ÷ riser count",
+      "Tread count = riser count − 1; total run = tread count × tread depth",
+    ],
+    example:
+      "A floor-to-floor rise of 108 in with a target 7.25 in riser produces 15 risers at 7.2 in each, 14 treads, and a 140 in total run using 10 in treads.",
+    tips: [
+      "Measure finished-floor to finished-floor height, not rough framing alone.",
+      "Verify maximum riser height, minimum tread depth, headroom, landings, and handrails locally.",
+      "Use the result for planning only; structural stringer layout should be checked professionally.",
+    ],
+    faqs: [
+      {
+        question: "How many treads are in a staircase?",
+        answer:
+          "A typical straight stair between two floors has one fewer tread than risers because the upper floor acts as the final tread.",
+      },
+      {
+        question: "What is a comfortable stair rise?",
+        answer:
+          "Comfort and legal limits vary. Many residential stairs are near 7–7.75 in per riser, but local requirements control.",
+      },
+      {
+        question: "Can I use this to cut stringers?",
+        answer:
+          "Use it as a planning check only. Material size, bearing, notches, landings, code, and structural loading require project-specific verification.",
+      },
+    ],
+  },
 ];
 
 export const toolById = Object.fromEntries(
@@ -568,6 +783,49 @@ export const defaults: Record<
       waste: 10,
       boardCost: 28,
     },
+    brick: {
+      length: 20,
+      height: 8,
+      openingArea: 24,
+      brickLength: 7.625,
+      brickHeight: 2.25,
+      joint: 0.375,
+      waste: 10,
+      unitCost: 0.85,
+    },
+    fence: {
+      runLength: 120,
+      panelWidth: 8,
+      gateWidth: 4,
+      gateCount: 1,
+      waste: 5,
+      panelCost: 65,
+      postCost: 18,
+    },
+    insulation: {
+      length: 30,
+      height: 8,
+      openingArea: 32,
+      packageCoverage: 40,
+      waste: 10,
+      packageCost: 55,
+    },
+    wallpaper: {
+      width: 24,
+      height: 8,
+      openingArea: 20,
+      rollWidth: 20.5,
+      rollLength: 33,
+      patternRepeat: 21,
+      waste: 10,
+      rollCost: 48,
+    },
+    stair: {
+      totalRise: 108,
+      targetRise: 7.25,
+      treadDepth: 10,
+      treadCost: 32,
+    },
   },
   metric: {
     paint: {
@@ -660,6 +918,49 @@ export const defaults: Record<
       boardLength: 4.8,
       waste: 10,
       boardCost: 26,
+    },
+    brick: {
+      length: 6,
+      height: 2.4,
+      openingArea: 2.2,
+      brickLength: 19.4,
+      brickHeight: 5.7,
+      joint: 1,
+      waste: 10,
+      unitCost: 0.8,
+    },
+    fence: {
+      runLength: 36,
+      panelWidth: 2.4,
+      gateWidth: 1.2,
+      gateCount: 1,
+      waste: 5,
+      panelCost: 62,
+      postCost: 17,
+    },
+    insulation: {
+      length: 9,
+      height: 2.4,
+      openingArea: 3,
+      packageCoverage: 3.7,
+      waste: 10,
+      packageCost: 52,
+    },
+    wallpaper: {
+      width: 7.2,
+      height: 2.4,
+      openingArea: 1.8,
+      rollWidth: 52,
+      rollLength: 10,
+      patternRepeat: 53,
+      waste: 10,
+      rollCost: 45,
+    },
+    stair: {
+      totalRise: 274,
+      targetRise: 18.5,
+      treadDepth: 25,
+      treadCost: 30,
     },
   },
 };
@@ -769,6 +1070,54 @@ export function fieldsFor(tool: ToolKey, unit: UnitSystem): Field[] {
         { key: "boardLength", label: "Board length", suffix: lengthUnit, min: 0.1, step: 0.1 },
         { key: "waste", label: "Waste allowance", suffix: "%", min: 0, step: 1 },
         { key: "boardCost", label: "Cost per board", min: 0, step: 0.01 },
+      ];
+    case "brick":
+      return [
+        { key: "length", label: "Wall length", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "height", label: "Wall height", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "openingArea", label: "Doors & windows", suffix: areaUnit, min: 0, step: 0.1 },
+        { key: "brickLength", label: "Brick length", suffix: unit === "imperial" ? "in" : "cm", min: 0.1, step: 0.1 },
+        { key: "brickHeight", label: "Brick height", suffix: unit === "imperial" ? "in" : "cm", min: 0.1, step: 0.1 },
+        { key: "joint", label: "Mortar joint", suffix: unit === "imperial" ? "in" : "cm", min: 0, step: 0.01 },
+        { key: "waste", label: "Waste allowance", suffix: "%", min: 0, step: 1 },
+        { key: "unitCost", label: "Cost per brick", min: 0, step: 0.01 },
+      ];
+    case "fence":
+      return [
+        { key: "runLength", label: "Total fence run", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "panelWidth", label: "Panel width", suffix: lengthUnit, min: 0.1, step: 0.1 },
+        { key: "gateWidth", label: "Width per gate", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "gateCount", label: "Number of gates", min: 0, step: 1 },
+        { key: "waste", label: "Extra panel allowance", suffix: "%", min: 0, step: 1 },
+        { key: "panelCost", label: "Cost per panel", min: 0, step: 0.01 },
+        { key: "postCost", label: "Cost per post", min: 0, step: 0.01 },
+      ];
+    case "insulation":
+      return [
+        { key: "length", label: "Surface length", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "height", label: "Surface height", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "openingArea", label: "Doors & windows", suffix: areaUnit, min: 0, step: 0.1 },
+        { key: "packageCoverage", label: "Coverage per package", suffix: areaUnit, min: 0.01, step: 0.01 },
+        { key: "waste", label: "Waste allowance", suffix: "%", min: 0, step: 1 },
+        { key: "packageCost", label: "Cost per package", min: 0, step: 0.01 },
+      ];
+    case "wallpaper":
+      return [
+        { key: "width", label: "Total wall width", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "height", label: "Wall height", suffix: lengthUnit, min: 0, step: 0.1 },
+        { key: "openingArea", label: "Doors & windows", suffix: areaUnit, min: 0, step: 0.1 },
+        { key: "rollWidth", label: "Roll width", suffix: unit === "imperial" ? "in" : "cm", min: 0.1, step: 0.1 },
+        { key: "rollLength", label: "Roll length", suffix: lengthUnit, min: 0.1, step: 0.1 },
+        { key: "patternRepeat", label: "Vertical pattern repeat", suffix: unit === "imperial" ? "in" : "cm", min: 0, step: 0.1 },
+        { key: "waste", label: "Waste allowance", suffix: "%", min: 0, step: 1 },
+        { key: "rollCost", label: "Cost per roll", min: 0, step: 0.01 },
+      ];
+    case "stair":
+      return [
+        { key: "totalRise", label: "Finished floor-to-floor rise", suffix: unit === "imperial" ? "in" : "cm", min: 0.1, step: 0.1 },
+        { key: "targetRise", label: "Target riser height", suffix: unit === "imperial" ? "in" : "cm", min: 0.1, step: 0.1 },
+        { key: "treadDepth", label: "Tread depth", suffix: unit === "imperial" ? "in" : "cm", min: 0.1, step: 0.1 },
+        { key: "treadCost", label: "Cost per tread", min: 0, step: 0.01 },
       ];
   }
 }
@@ -1048,6 +1397,141 @@ export function calculate(
       ],
       note:
         "This estimates surface boards only. Framing, fascia, stairs, railings, fasteners, and special border layouts are separate.",
+    };
+  }
+
+  if (tool === "brick") {
+    const wallArea = Math.max(
+      0,
+      (v.length || 0) * (v.height || 0) - (v.openingArea || 0),
+    );
+    const modularArea =
+      unit === "imperial"
+        ? ((v.brickLength || 0) + (v.joint || 0)) *
+          ((v.brickHeight || 0) + (v.joint || 0)) /
+          144
+        : (((v.brickLength || 0) + (v.joint || 0)) / 100) *
+          (((v.brickHeight || 0) + (v.joint || 0)) / 100);
+    const bricks =
+      modularArea > 0 ? Math.ceil((wallArea * factor) / modularArea) : 0;
+    return {
+      label: "Bricks required",
+      primary: `${bricks} bricks`,
+      stats: [
+        ["Net wall area", `${format(wallArea)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Area incl. waste", `${format(wallArea * factor)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Estimated brick cost", `${currency} ${format(bricks * (v.unitCost || 0), 2)}`],
+      ],
+      note:
+        "This estimates face brick quantity only. Wall thickness, bond pattern, corners, mortar, and structural requirements are separate.",
+    };
+  }
+
+  if (tool === "fence") {
+    const gates = Math.max(Math.floor(v.gateCount || 0), 0);
+    const netRun = Math.max(
+      0,
+      (v.runLength || 0) - gates * Math.max(v.gateWidth || 0, 0),
+    );
+    const panels = Math.ceil(
+      (netRun / Math.max(v.panelWidth || 0.1, 0.1)) * factor,
+    );
+    const posts = panels > 0 ? panels + 1 + gates : gates * 2;
+    const cost =
+      panels * (v.panelCost || 0) + posts * (v.postCost || 0);
+    return {
+      label: "Fence panels required",
+      primary: `${panels} panels`,
+      stats: [
+        ["Posts to plan for", `${posts} posts`],
+        ["Net panel run", `${format(netRun)} ${unit === "imperial" ? "ft" : "m"}`],
+        ["Panel & post estimate", `${currency} ${format(cost, 2)}`],
+      ],
+      note:
+        "Corners, slopes, end conditions, gate hardware, post depth, concrete, and local requirements can change the final material list.",
+    };
+  }
+
+  if (tool === "insulation") {
+    const netArea = Math.max(
+      0,
+      (v.length || 0) * (v.height || 0) - (v.openingArea || 0),
+    );
+    const targetArea = netArea * factor;
+    const coverage = Math.max(v.packageCoverage || 0.01, 0.01);
+    const packages = Math.ceil(targetArea / coverage);
+    return {
+      label: "Insulation packages required",
+      primary: `${packages} packages`,
+      stats: [
+        ["Net surface area", `${format(netArea)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Purchased coverage", `${format(packages * coverage)} ${unit === "imperial" ? "sq ft" : "m²"}`],
+        ["Estimated material cost", `${currency} ${format(packages * (v.packageCost || 0), 2)}`],
+      ],
+      note:
+        "Confirm cavity size, required R-value, vapor control, and the package coverage printed for the selected product.",
+    };
+  }
+
+  if (tool === "wallpaper") {
+    const netArea = Math.max(
+      0,
+      (v.width || 0) * (v.height || 0) - (v.openingArea || 0),
+    );
+    const rollWidth =
+      unit === "imperial"
+        ? (v.rollWidth || 0) / 12
+        : (v.rollWidth || 0) / 100;
+    const repeat =
+      unit === "imperial"
+        ? (v.patternRepeat || 0) / 12
+        : (v.patternRepeat || 0) / 100;
+    const stripLength =
+      repeat > 0
+        ? Math.ceil((v.height || 0) / repeat - 1e-9) * repeat
+        : Math.max(v.height || 0, 0);
+    const coveragePerStrip =
+      Math.max(rollWidth, 0.001) * Math.max(v.height || 0, 0.001);
+    const strips = Math.ceil((netArea * factor) / coveragePerStrip);
+    const stripsPerRoll = Math.max(
+      1,
+      Math.floor((v.rollLength || 0) / Math.max(stripLength, 0.001)),
+    );
+    const rolls = Math.ceil(strips / stripsPerRoll);
+    return {
+      label: "Wallpaper rolls required",
+      primary: `${rolls} rolls`,
+      stats: [
+        ["Strips required", `${strips} strips`],
+        ["Usable strips per roll", `${stripsPerRoll} strips`],
+        ["Estimated material cost", `${currency} ${format(rolls * (v.rollCost || 0), 2)}`],
+      ],
+      note:
+        "Pattern matching method, trimming, half-drop repeats, and dye-lot availability can increase the practical roll quantity.",
+    };
+  }
+
+  if (tool === "stair") {
+    const totalRise = Math.max(v.totalRise || 0, 0);
+    const risers = Math.max(
+      1,
+      Math.round(totalRise / Math.max(v.targetRise || 0.1, 0.1)),
+    );
+    const actualRise = totalRise / risers;
+    const treads = Math.max(risers - 1, 0);
+    const totalRun = treads * Math.max(v.treadDepth || 0, 0);
+    const stringerLength = Math.hypot(totalRise, totalRun);
+    const dimensionUnit = unit === "imperial" ? "in" : "cm";
+    return {
+      label: "Stair risers",
+      primary: `${risers} risers`,
+      stats: [
+        ["Actual riser height", `${format(actualRise, 2)} ${dimensionUnit}`],
+        ["Treads & total run", `${treads} treads · ${format(totalRun, 1)} ${dimensionUnit}`],
+        ["Approx. stringer & tread cost", `${format(stringerLength, 1)} ${dimensionUnit} · ${currency} ${format(treads * (v.treadCost || 0), 2)}`],
+      ],
+      note:
+        "This is a geometry planning estimate. Verify rise, run, headroom, landings, handrails, structural details, and local code before construction.",
     };
   }
 
