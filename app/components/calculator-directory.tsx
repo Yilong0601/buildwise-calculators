@@ -48,7 +48,7 @@ export function CalculatorDirectory({
         Browse calculators by project
       </h2>
       <label className="calculator-search">
-        <span className="visually-hidden">Search all 10 calculators</span>
+        <span className="visually-hidden">Search all 15 calculators</span>
         <span className="search-field">
           <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <circle cx="14" cy="14" r="8" />
