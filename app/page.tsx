@@ -10,19 +10,19 @@ export default function Home() {
       id: "interior",
       label: "Interior surfaces",
       description: "Rooms, walls, floors, and finishes.",
-      tools: ["paint", "tile", "flooring", "drywall"],
+      tools: ["paint", "tile", "flooring", "drywall", "wallpaper", "insulation"],
     },
     {
       id: "structure",
       label: "Structure",
       description: "Foundations and exterior shells.",
-      tools: ["concrete", "roofing"],
+      tools: ["concrete", "roofing", "brick", "stair"],
     },
     {
       id: "landscape",
       label: "Outdoors",
       description: "Decks, paths, beds, and landscaping.",
-      tools: ["decking", "gravel", "mulch"],
+      tools: ["decking", "gravel", "mulch", "fence"],
     },
     {
       id: "budget",
