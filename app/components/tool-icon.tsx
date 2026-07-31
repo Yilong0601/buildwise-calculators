@@ -103,6 +103,52 @@ function iconArtwork(type: string) {
           <path className="tool-icon-accent" d="M9 24h30" />
         </>
       );
+    case "brick":
+      return (
+        <>
+          <path d="M6 10h36v28H6zM6 19h36M6 29h36" />
+          <path d="M16 10v9M34 10v9M12 19v10M28 19v10M19 29v9M36 29v9" />
+          <path className="tool-icon-accent" d="M7 39h34" />
+        </>
+      );
+    case "fence":
+      return (
+        <>
+          <path d="M10 11v30M24 7v34M38 11v30" />
+          <path d="M7 18h34M7 32h34" />
+          <path d="M7 11l3-4 3 4M21 7l3-4 3 4M35 11l3-4 3 4" />
+          <path className="tool-icon-accent" d="M8 34h32" />
+        </>
+      );
+    case "insulation":
+      return (
+        <>
+          <path d="M9 9h24c5 0 8 3 8 8v22H17c-5 0-8-3-8-8z" />
+          <circle cx="33" cy="17" r="8" />
+          <circle cx="33" cy="17" r="3" />
+          <path d="M14 16c4 3 4 6 0 9s-4 6 0 9M20 16c4 3 4 6 0 9s-4 6 0 9" />
+          <path className="tool-icon-accent" d="M10 39h30" />
+        </>
+      );
+    case "wallpaper":
+      return (
+        <>
+          <path d="M10 7h23c4 0 7 3 7 7v27H16c-3 0-6-3-6-6z" />
+          <circle cx="33" cy="14" r="7" />
+          <circle cx="33" cy="14" r="2" />
+          <path d="M16 14c6 2 10 6 12 12M15 28c5-1 9 1 12 6" />
+          <path className="tool-icon-accent" d="M15 20c3-2 6-2 9 0" />
+        </>
+      );
+    case "stair":
+      return (
+        <>
+          <path d="M7 39h8v-8h8v-8h8v-8h10" />
+          <path d="M7 43h36M7 39V15" />
+          <path className="tool-icon-accent" d="M12 35l27-27" />
+          <path d="M35 8h4v4" />
+        </>
+      );
     default:
       return (
         <>
