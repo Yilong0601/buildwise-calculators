@@ -14,15 +14,15 @@ export default function Home() {
     },
     {
       id: "structure",
-      label: "Structure & exterior",
-      description: "Foundations, roofs, and outdoor builds.",
-      tools: ["concrete", "roofing", "decking"],
+      label: "Structure",
+      description: "Foundations and exterior shells.",
+      tools: ["concrete", "roofing"],
     },
     {
       id: "landscape",
-      label: "Yard & ground",
-      description: "Paths, beds, bases, and landscaping.",
-      tools: ["gravel", "mulch"],
+      label: "Outdoors",
+      description: "Decks, paths, beds, and landscaping.",
+      tools: ["decking", "gravel", "mulch"],
     },
     {
       id: "budget",
@@ -40,29 +40,14 @@ export default function Home() {
       <SiteHeader />
 
       <section className="home-hero">
-        <div className="home-hero-label">
-          <span>10 focused calculators</span>
-          <span>Free · no signup</span>
-        </div>
         <h1>
-          <span>Plan the project.</span>
-          <em>Buy the right amount.</em>
+          <span>Plan with confidence.</span>
+          <em>Buy only what you need.</em>
         </h1>
-        <div className="home-hero-foot">
-          <p>
-            Turn measurements into purchase-ready quantities for building,
-            renovation, and landscaping materials.
-          </p>
-          <a className="primary-button" href="#calculators">
-            Find your calculator
-            <span aria-hidden="true">↓</span>
-          </a>
-          <div className="home-hero-note">
-            <span>Metric + imperial</span>
-            <span>Editable assumptions</span>
-            <span>Full packages</span>
-          </div>
-        </div>
+        <p>
+          Purchase-ready estimates for building, renovation, and landscaping
+          materials.
+        </p>
       </section>
 
       <CalculatorDirectory groups={groups} />
