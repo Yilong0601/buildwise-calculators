@@ -16,18 +16,16 @@ export default function ContactPage() {
     >
       <h2>Report an issue or request</h2>
       <p>
-        Use our public feedback tracker to report a calculation issue, unclear
-        instruction, accessibility problem, or useful calculator idea. Do not
-        include private project, payment, or personal information.
+        Email us to report a calculation issue, unclear instruction,
+        accessibility problem, or useful calculator idea. Do not include
+        private project, payment, or personal information.
       </p>
       <p>
         <a
           className="content-cta"
-          href="https://github.com/Yilong0601/buildwise-calculators/issues/new"
-          rel="noreferrer"
-          target="_blank"
+          href="mailto:contact@buildwisecalc.com?subject=BuildWise%20calculator%20feedback"
         >
-          Open the feedback tracker ↗
+          Email contact@buildwisecalc.com
         </a>
       </p>
       <h2>Before sending feedback</h2>
