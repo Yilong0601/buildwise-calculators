@@ -1,130 +1,105 @@
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
-import { ToolIcon } from "./components/tool-icon";
+import { CalculatorDirectory } from "./components/calculator-directory";
 import { tools } from "./lib/calculators";
 
 export default function Home() {
+  const toolById = new Map(tools.map((tool) => [tool.id, tool]));
+  const groups = [
+    {
+      id: "interior",
+      label: "Interior surfaces",
+      description: "Rooms, walls, floors, and finishes.",
+      tools: ["paint", "tile", "flooring", "drywall"],
+    },
+    {
+      id: "structure",
+      label: "Structure & exterior",
+      description: "Foundations, roofs, and outdoor builds.",
+      tools: ["concrete", "roofing", "decking"],
+    },
+    {
+      id: "landscape",
+      label: "Yard & ground",
+      description: "Paths, beds, bases, and landscaping.",
+      tools: ["gravel", "mulch"],
+    },
+    {
+      id: "budget",
+      label: "Project budget",
+      description: "Bring materials, labor, tax, and contingency together.",
+      tools: ["cost"],
+    },
+  ].map((group) => ({
+    ...group,
+    tools: group.tools.map((id) => toolById.get(id)!).filter(Boolean),
+  }));
+
   return (
     <main>
       <SiteHeader />
 
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">
-            <span />
-            Free project planning tools
-          </p>
-          <h1>
-            Measure once.
-            <br />
-            Build with <em>confidence.</em>
-          </h1>
-          <p className="hero-lede">
-            Clear calculators for building, landscaping, and renovation
-            materials. See practical purchase quantities, not just theoretical
-            measurements.
+      <section className="home-hero">
+        <div className="home-hero-label">
+          <span>10 focused calculators</span>
+          <span>Free · no signup</span>
+        </div>
+        <h1>
+          <span>Plan the project.</span>
+          <em>Buy the right amount.</em>
+        </h1>
+        <div className="home-hero-foot">
+          <p>
+            Turn measurements into purchase-ready quantities for building,
+            renovation, and landscaping materials.
           </p>
           <a className="primary-button" href="#calculators">
-            Choose a calculator
-            <span aria-hidden="true">↘</span>
+            Find your calculator
+            <span aria-hidden="true">↓</span>
           </a>
-          <div className="trust-row" aria-label="Product benefits">
-            <span>✓ Metric & imperial</span>
-            <span>✓ Transparent formulas</span>
-            <span>✓ Free, no signup</span>
+          <div className="home-hero-note">
+            <span>Metric + imperial</span>
+            <span>Editable assumptions</span>
+            <span>Full packages</span>
           </div>
-        </div>
-
-        <div className="hero-visual" aria-label="Project calculator preview">
-          <div className="shape shape-arch" />
-          <div className="shape shape-dot-grid" />
-          <div className="measurement measurement-top">
-            <span>12.4 ft</span>
-          </div>
-          <div className="measurement measurement-side">
-            <span>8.2 ft</span>
-          </div>
-          <div className="preview-card">
-            <div className="preview-topline">
-              <span>Paint estimate</span>
-              <span className="preview-status">Ready</span>
-            </div>
-            <div className="preview-room">
-              <span className="room-window" />
-              <span className="room-door" />
-              <span className="room-floor" />
-            </div>
-            <div className="preview-result">
-              <span>Full cans to buy</span>
-              <strong>
-                4 <small>cans</small>
-              </strong>
-            </div>
-          </div>
-          <div className="floating-chip chip-one">+ 10% waste</div>
-          <div className="floating-chip chip-two">Full boxes</div>
         </div>
       </section>
 
-      <section
-        className="tool-strip"
-        id="calculators"
-        aria-labelledby="tools-title"
-      >
-        <div className="section-kicker">
-          <p id="tools-title">Choose your calculator</p>
-          <span>Ten focused tools with formulas, examples, and practical totals</span>
-        </div>
-        <div className="tool-grid">
-          {tools.map((tool, index) => (
-            <a className="tool-card" href={`/${tool.slug}`} key={tool.id}>
-              <span className="tool-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <ToolIcon type={tool.icon} />
-              <span className="tool-name">{tool.name}</span>
-              <span className="tool-detail">{tool.detail}</span>
-              <span className="tool-arrow" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-          ))}
-        </div>
-      </section>
+      <CalculatorDirectory groups={groups} />
 
-      <section className="value-section">
-        <div>
+      <section className="purchase-section">
+        <div className="purchase-copy">
           <p className="eyebrow">
             <span />
             Built for real purchases
           </p>
-          <h2>From dimensions to a useful shopping estimate.</h2>
+          <h2>The result should help at the store—not stop at square feet.</h2>
+          <p>
+            Each calculator shows the assumptions behind the answer, rounds to
+            practical package quantities, and gives you a result you can copy
+            or save as a PDF.
+          </p>
         </div>
-        <div className="value-grid">
-          <article>
-            <span>01</span>
-            <h3>Complete packages</h3>
-            <p>
-              Results round tile, flooring, and paint up to practical boxes or
-              cans instead of stopping at a fraction.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Editable assumptions</h3>
-            <p>
-              Replace coverage, yield, package size, waste, and price with the
-              values printed on your product.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Easy to take with you</h3>
-            <p>
-              Copy an estimate or use your browser’s print option to save a PDF
-              without creating an account.
-            </p>
-          </article>
+        <div className="purchase-ticket" aria-label="Example purchase estimate">
+          <div>
+            <span>Example estimate</span>
+            <strong>Paint · bedroom</strong>
+          </div>
+          <dl>
+            <div>
+              <dt>Paintable area</dt>
+              <dd>624 sq ft</dd>
+            </div>
+            <div>
+              <dt>Two coats</dt>
+              <dd>3.57 gal</dd>
+            </div>
+            <div>
+              <dt>Full cans to buy</dt>
+              <dd>4 × 1 gal</dd>
+            </div>
+          </dl>
+          <p>Coverage and openings remain editable.</p>
         </div>
       </section>
 
