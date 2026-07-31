@@ -807,7 +807,7 @@ h1 em {
   border: 0;
   border-radius: 8px;
   background: transparent;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 750;
 }
 
@@ -825,9 +825,10 @@ h1 em {
 .field {
   display: grid;
   gap: 8px;
-  color: var(--ink-soft);
-  font-size: 11px;
+  color: var(--forest);
+  font-size: 13px;
   font-weight: 700;
+  line-height: 1.35;
 }
 
 .input-wrap {
@@ -870,9 +871,10 @@ h1 em {
   position: absolute;
   right: 13px;
   max-width: 78px;
-  color: var(--sage);
-  font-size: 9px;
+  color: #60766f;
+  font-size: 11px;
   font-weight: 800;
+  line-height: 1.2;
   text-align: right;
 }
 
@@ -905,8 +907,8 @@ h1 em {
 
 .result-label {
   margin-top: 54px;
-  color: rgba(251,248,239,.62);
-  font-size: 10px;
+  color: rgba(251,248,239,.78);
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -930,14 +932,16 @@ h1 em {
   gap: 22px;
   padding: 14px 0;
   border-bottom: 1px solid rgba(251,248,239,.13);
-  font-size: 11px;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .result-stats span {
-  color: rgba(251,248,239,.64);
+  color: rgba(251,248,239,.8);
 }
 
 .result-stats strong {
+  color: var(--paper);
   text-align: right;
 }
 
@@ -948,9 +952,9 @@ h1 em {
   gap: 9px;
   margin: auto 0 0;
   padding-top: 28px;
-  color: rgba(251,248,239,.66);
-  font-size: 10px;
-  line-height: 1.55;
+  color: rgba(251,248,239,.8);
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .result-note > span {
@@ -1807,8 +1811,8 @@ footer > small {
 .currency-note {
   margin: 18px 0 0;
   color: var(--ink-soft);
-  font-size: 10px;
-  line-height: 1.55;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .mobile-estimate-link {
@@ -1831,7 +1835,7 @@ footer > small {
   border: 1px solid rgba(251,248,239,.35);
   border-radius: 9px;
   background: rgba(251,248,239,.08);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -1895,12 +1899,13 @@ footer > small {
   display: grid;
   grid-template-columns: 34px 1fr;
   gap: 14px;
-  align-items: center;
-  padding: 15px 0;
+  align-items: start;
+  padding: 17px 0;
   border-top: 1px solid rgba(24,58,50,.13);
   font-family: var(--font-geist-mono);
-  font-size: 12px;
-  line-height: 1.65;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.7;
 }
 
 .formula-card li::before {
@@ -2243,7 +2248,7 @@ footer > div {
   }
 
   .field {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .input-wrap {
@@ -2427,10 +2432,16 @@ footer > div {
 }
 
 @media print {
+  @page {
+    margin: 14mm;
+  }
+
   .site-header,
   .page-hero,
   .seo-content,
   footer,
+  .input-panel,
+  .mobile-estimate-link,
   .result-actions {
     display: none !important;
   }
@@ -2448,16 +2459,36 @@ footer > div {
   }
 
   .workspace {
+    display: block;
     width: 100%;
-    grid-template-columns: 1fr;
+    overflow: visible;
     border: 0;
     box-shadow: none;
   }
 
   .result-panel {
+    width: 100%;
+    min-height: 0;
+    padding: 28px;
+    box-sizing: border-box;
     color: white;
+    border-radius: 18px;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
+  }
+
+  .result-panel::after {
+    display: none;
+  }
+
+  .result-label {
+    margin-top: 32px;
+  }
+
+  .result-note {
+    margin-top: 24px;
   }
 }
 
