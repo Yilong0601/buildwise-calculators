@@ -44,27 +44,27 @@ export function CalculatorDirectory({
       id="calculators"
       aria-labelledby="directory-title"
     >
-      <div className="directory-heading">
-        <div>
-          <p className="eyebrow">
-            <span />
-            Start with your project
-          </p>
-          <h2 id="directory-title">What are you working on?</h2>
-        </div>
-        <label className="calculator-search">
-          <span>Search all 10 calculators</span>
-          <span className="search-field">
-            <span aria-hidden="true">⌕</span>
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Try “roof”, “paint”, or “yard”"
-            />
+      <h2 className="visually-hidden" id="directory-title">
+        Browse calculators by project
+      </h2>
+      <label className="calculator-search">
+        <span className="visually-hidden">Search all 10 calculators</span>
+        <span className="search-field">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="8" />
+            <path d="m20 20 7 7" />
+          </svg>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="What are you working on?"
+          />
+          <span className="search-arrow" aria-hidden="true">
+            →
           </span>
-        </label>
-      </div>
+        </span>
+      </label>
 
       {normalizedQuery ? (
         <div className="search-results" aria-live="polite">
@@ -80,14 +80,14 @@ export function CalculatorDirectory({
           </div>
         </div>
       ) : (
-        <div className="project-groups">
-          {groups.map((group, groupIndex) => (
+        <div className="project-browser">
+          <p>Browse by project</p>
+          <div className="project-groups">
+          {groups.map((group) => (
             <article className="project-group" key={group.id}>
               <div className="group-intro">
-                <span>{String(groupIndex + 1).padStart(2, "0")}</span>
                 <div>
                   <h3>{group.label}</h3>
-                  <p>{group.description}</p>
                 </div>
               </div>
               <div className="group-tools">
@@ -97,6 +97,7 @@ export function CalculatorDirectory({
               </div>
             </article>
           ))}
+          </div>
         </div>
       )}
     </section>
@@ -109,7 +110,6 @@ function DirectoryLink({ tool }: { tool: DirectoryTool }) {
       <ToolIcon type={tool.icon} />
       <span>
         <strong>{tool.name}</strong>
-        <small>{tool.detail}</small>
       </span>
       <span className="directory-arrow" aria-hidden="true">
         ↗
