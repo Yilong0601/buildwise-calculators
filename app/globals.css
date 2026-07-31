@@ -2432,16 +2432,10 @@ footer > div {
 }
 
 @media print {
-  @page {
-    margin: 14mm;
-  }
-
   .site-header,
   .page-hero,
   .seo-content,
   footer,
-  .input-panel,
-  .mobile-estimate-link,
   .result-actions {
     display: none !important;
   }
@@ -2459,36 +2453,16 @@ footer > div {
   }
 
   .workspace {
-    display: block;
     width: 100%;
-    overflow: visible;
+    grid-template-columns: 1fr;
     border: 0;
     box-shadow: none;
   }
 
   .result-panel {
-    width: 100%;
-    min-height: 0;
-    padding: 28px;
-    box-sizing: border-box;
     color: white;
-    border-radius: 18px;
-    break-inside: avoid-page;
-    page-break-inside: avoid;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
-  }
-
-  .result-panel::after {
-    display: none;
-  }
-
-  .result-label {
-    margin-top: 32px;
-  }
-
-  .result-note {
-    margin-top: 24px;
   }
 }
 
