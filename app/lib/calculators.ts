@@ -35,6 +35,7 @@ export type ToolSpec = {
   id: ToolKey;
   slug: string;
   name: string;
+  pageTitle?: string;
   icon: string;
   detail: string;
   summary: string;
@@ -45,6 +46,12 @@ export type ToolSpec = {
   example: string;
   tips: string[];
   faqs: Array<{ question: string; answer: string }>;
+  guideSections?: Array<{
+    title: string;
+    paragraphs: string[];
+    bullets?: string[];
+  }>;
+  related?: ToolKey[];
 };
 
 export const currencies = ["USD", "CAD", "GBP", "EUR", "AUD"];
@@ -222,14 +229,15 @@ export const tools: ToolSpec[] = [
     id: "cost",
     slug: "project-cost-calculator",
     name: "Project Cost",
+    pageTitle: "Project cost calculator and estimator",
     icon: "cost",
     detail: "Materials & labor",
     summary:
-      "Combine material waste, labor, delivery, contingency, and tax into a transparent planning total.",
-    seoTitle: "Free Project Cost Calculator — Materials & Labor",
+      "Estimate material cost, labor, delivery, contingency, tax, and the total price of a project in one transparent calculation.",
+    seoTitle: "Project Cost Calculator — Materials, Labor & Price",
     seoDescription:
-      "Estimate a project budget from area, material and labor rates, waste, delivery, contingency, and tax in your chosen currency.",
-    formulaTitle: "How the project cost estimate works",
+      "Use this free project cost estimator to calculate materials, labor, waste, delivery, contingency, tax, and total project price.",
+    formulaTitle: "How to calculate the estimated cost of a project",
     formulas: [
       "Material cost = area × material rate × (1 + waste %)",
       "Subtotal = material cost + labor cost + delivery",
@@ -244,6 +252,16 @@ export const tools: ToolSpec[] = [
     ],
     faqs: [
       {
+        question: "How do I calculate the estimated cost of a project?",
+        answer:
+          "Start with material quantity and rate, add a realistic waste allowance, then add labor and delivery. Apply contingency to the subtotal and tax where required. This calculator keeps each part visible before showing the total project estimate.",
+      },
+      {
+        question: "What does the material cost calculator include?",
+        answer:
+          "It multiplies project area by the material rate, then adds your chosen waste allowance. Labor, delivery, contingency, and tax are calculated separately so the material amount remains easy to review.",
+      },
+      {
         question: "Does changing currency convert the amounts?",
         answer:
           "No. The currency selector labels your estimate. Enter material, labor, and delivery costs in that same currency.",
@@ -254,11 +272,33 @@ export const tools: ToolSpec[] = [
           "A small, well-defined project may use a lower contingency than renovation work with hidden conditions. Choose a value that matches the project risk.",
       },
       {
-        question: "Is this a contractor quote?",
+        question: "Is this project price calculator a contractor quote?",
         answer:
           "No. It is a planning estimate based only on your inputs and should be compared with supplier prices and professional quotes.",
       },
     ],
+    guideSections: [
+      {
+        title: "Project cost estimator for materials and labor",
+        paragraphs: [
+          "Use this calculator when you need a quick but traceable project estimate. Enter the project area, material rate, labor rate, delivery charge, waste allowance, contingency, and tax to see how each input contributes to the final price.",
+          "The result separates material cost from labor and other allowances. That makes it useful for early budgeting, comparing material options, and checking whether a supplier or contractor estimate includes the same items.",
+        ],
+      },
+      {
+        title: "What this material cost calculator includes",
+        paragraphs: [
+          "A project budget is more reliable when material waste and project risk are not hidden inside one rate. The calculator shows the main cost layers separately before combining them.",
+        ],
+        bullets: [
+          "Material cost based on area, unit rate, and waste allowance",
+          "Labor cost based on the same measured project area",
+          "Delivery or other fixed project charges",
+          "Contingency and tax applied to a visible subtotal",
+        ],
+      },
+    ],
+    related: ["flooring", "roofing", "drywall", "decking"],
   },
   {
     id: "gravel",
@@ -349,14 +389,15 @@ export const tools: ToolSpec[] = [
     id: "roofing",
     slug: "roofing-calculator",
     name: "Roofing",
+    pageTitle: "Roofing and shingle calculator",
     icon: "roofing",
     detail: "Shingles & bundles",
     summary:
-      "Estimate sloped roof area, waste-adjusted coverage, full shingle bundles, roofing squares, and material cost.",
-    seoTitle: "Free Roofing Calculator — Shingles, Bundles & Cost",
+      "Estimate sloped roof area, roofing squares, full shingle bundles, waste, and material cost from roof dimensions and pitch.",
+    seoTitle: "Roofing & Shingle Calculator — Bundles & Cost",
     seoDescription:
-      "Calculate roof area, shingle bundles, roofing squares, waste, and estimated material cost using plan dimensions and roof pitch.",
-    formulaTitle: "How the roofing estimate works",
+      "Use this free roof shingle estimator to calculate roof area, roofing squares, shingle bundles, waste, and estimated material cost.",
+    formulaTitle: "How the roof shingle estimate works",
     formulas: [
       "Sloped roof area = plan length × plan width ÷ cos(pitch angle)",
       "Target coverage = sloped roof area × (1 + waste %)",
@@ -370,6 +411,16 @@ export const tools: ToolSpec[] = [
       "Confirm bundle coverage and required underlayment with the product manufacturer.",
     ],
     faqs: [
+      {
+        question: "How many shingle bundles do I need?",
+        answer:
+          "Calculate the sloped roof area, add a waste allowance, and divide by the coverage printed on one bundle. Always round up to complete bundles. This calculator performs those steps using your roof dimensions and pitch.",
+      },
+      {
+        question: "How do I estimate shingle cost?",
+        answer:
+          "Multiply the required full bundle count by the price per bundle. The result is a shingle material estimate only; underlayment, flashing, ridge caps, starter strips, fasteners, labor, and disposal may be separate.",
+      },
       {
         question: "What is a roofing square?",
         answer:
@@ -386,6 +437,28 @@ export const tools: ToolSpec[] = [
           "Simple gable roofs may use about 10%. Roofs with hips, valleys, dormers, or intricate cuts often require a higher allowance.",
       },
     ],
+    guideSections: [
+      {
+        title: "Roof shingle estimator for bundles and cost",
+        paragraphs: [
+          "This roofing calculator converts the horizontal roof footprint into sloped surface area using the roof pitch. It then adds your waste allowance and rounds the result up to full shingle bundles, producing a practical purchase quantity rather than a fractional estimate.",
+          "Use the bundle coverage and price printed by the manufacturer or supplier. Product coverage varies, so replacing the default values is the simplest way to improve the shingle quantity and cost estimate.",
+        ],
+      },
+      {
+        title: "What the roofing calculator includes",
+        paragraphs: [
+          "The estimate is designed for early material planning on a simple roof footprint. Complex roofs should be divided into measurable sections or checked by a roofing professional.",
+        ],
+        bullets: [
+          "Sloped roof surface area adjusted for pitch",
+          "Roofing squares for imperial projects",
+          "Waste-adjusted coverage and full shingle bundles",
+          "Estimated shingle cost based on complete bundles",
+        ],
+      },
+    ],
+    related: ["cost", "insulation", "decking", "concrete"],
   },
   {
     id: "mulch",
