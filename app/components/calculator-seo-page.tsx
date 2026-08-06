@@ -6,13 +6,16 @@ import { toolById, tools, type ToolKey } from "../lib/calculators";
 
 export function CalculatorSeoPage({ tool }: { tool: ToolKey }) {
   const spec = toolById[tool];
-  const related = tools.filter((item) => item.id !== tool).slice(0, 4);
+  const related = spec.related
+    ? spec.related.map((id) => toolById[id])
+    : tools.filter((item) => item.id !== tool).slice(0, 4);
+  const pageTitle = spec.pageTitle ?? `${spec.name} calculator`;
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebApplication",
-        name: `${spec.name} Calculator`,
+        name: pageTitle,
         url: `https://buildwisecalc.com/${spec.slug}`,
         applicationCategory: "UtilitiesApplication",
         operatingSystem: "Any",
@@ -43,13 +46,13 @@ export function CalculatorSeoPage({ tool }: { tool: ToolKey }) {
           <p className="breadcrumb">
             <a href="/">Home</a>
             <span>/</span>
-            {spec.name} calculator
+            {pageTitle}
           </p>
           <p className="eyebrow">
             <span />
             Free project planning tool
           </p>
-          <h1>{spec.name} calculator</h1>
+          <h1>{pageTitle}</h1>
           <p>{spec.summary}</p>
           <div className="trust-row">
             <span>✓ Metric & imperial</span>
@@ -67,6 +70,22 @@ export function CalculatorSeoPage({ tool }: { tool: ToolKey }) {
       <CalculatorTool tool={tool} />
 
       <section className="seo-content">
+        {spec.guideSections?.map((section) => (
+          <article key={section.title}>
+            <h2>{section.title}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {section.bullets ? (
+              <ul>
+                {section.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            ) : null}
+          </article>
+        ))}
+
         <article className="formula-card">
           <p className="eyebrow">
             <span />
