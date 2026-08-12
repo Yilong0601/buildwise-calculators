@@ -7,6 +7,7 @@ export function SiteFooter() {
       <p>Free calculators for better-built projects.</p>
       <div>
         <a href="/#calculators">Calculators</a>
+        <a href="/#guides">Guides</a>
         <a href="/about">About</a>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
