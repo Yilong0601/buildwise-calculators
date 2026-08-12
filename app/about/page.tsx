@@ -27,6 +27,32 @@ export default function AboutPage() {
         subscription, or saved personal project record. This keeps the tools
         quick to use and inexpensive to operate.
       </p>
+      <h2>How calculators are created and reviewed</h2>
+      <p>
+        Each calculator begins with a visible geometry or quantity formula. We
+        separate measured quantity, project allowances, product coverage, and
+        complete-package rounding so users can see which assumption changes the
+        result. Worked examples are recalculated when fields or formulas change.
+      </p>
+      <p>
+        Defaults are general starting points, not product recommendations. We
+        compare terminology and planning methods with primary manufacturer
+        resources, then keep coverage, yield, package size, density, waste, and
+        price editable. Every calculator links to our planning guides and
+        publishes the formula used.
+      </p>
+      <p>
+        Content is reviewed when a formula, default, or explanation changes.
+        Guide pages show their update month and link to representative sources.
+        Read our full <a href="/guides/calculator-methodology-and-assumptions">calculator methodology and assumptions</a>.
+      </p>
+      <h2>Why we do not publish local prices</h2>
+      <p>
+        Prices, taxes, product availability, and labor rates change by place and
+        time. Instead of maintaining a price database that can quickly become
+        outdated, BuildWise lets you enter a current supplier price and keeps
+        the cost calculation transparent.
+      </p>
       <h2>What the estimates mean</h2>
       <p>
         BuildWise provides planning estimates, not engineering, architectural,
@@ -34,6 +60,7 @@ export default function AboutPage() {
         codes, and installation requirements vary. Confirm important quantities
         with the product manufacturer, supplier, or a qualified professional.
       </p>
+      <p className="content-updated">Last updated: August 2026</p>
     </ContentPage>
   );
 }
