@@ -3,6 +3,7 @@ import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 import { ToolIcon } from "./tool-icon";
 import { toolById, tools, type ToolKey } from "../lib/calculators";
+import { guidesForTool } from "../lib/guides";
 
 export function CalculatorSeoPage({ tool }: { tool: ToolKey }) {
   const spec = toolById[tool];
@@ -10,6 +11,7 @@ export function CalculatorSeoPage({ tool }: { tool: ToolKey }) {
     ? spec.related.map((id) => toolById[id])
     : tools.filter((item) => item.id !== tool).slice(0, 4);
   const pageTitle = spec.pageTitle ?? `${spec.name} calculator`;
+  const planningGuides = guidesForTool(tool);
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -139,6 +141,24 @@ export function CalculatorSeoPage({ tool }: { tool: ToolKey }) {
                   <strong>{item.name}</strong>
                   <small>{item.detail}</small>
                 </span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="calculator-guides">
+          <p className="eyebrow">
+            <span />
+            Planning guides
+          </p>
+          <h2>Understand the estimate</h2>
+          <div>
+            {planningGuides.map((guide, index) => (
+              <a href={`/guides/${guide.slug}`} key={guide.slug}>
+                <span>0{index + 1}</span>
+                <strong>{guide.shortTitle}</strong>
+                <small>{guide.description}</small>
+                <b aria-hidden="true">→</b>
               </a>
             ))}
           </div>
