@@ -2,6 +2,7 @@ import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { CalculatorDirectory } from "./components/calculator-directory";
 import { tools } from "./lib/calculators";
+import { guides } from "./lib/guides";
 
 export default function Home() {
   const toolById = new Map(tools.map((tool) => [tool.id, tool]));
@@ -92,35 +93,25 @@ export default function Home() {
         <div className="guides-heading">
           <p className="eyebrow">
             <span />
-            Build smarter
+            Planning guides
           </p>
-          <h2>Good estimates start with good measurements.</h2>
+          <h2>Know what the number means before you buy.</h2>
+          <p>
+            Practical guides for measuring, choosing assumptions, checking
+            packages, and building a budget you can explain.
+          </p>
         </div>
-        <div className="guide-grid">
-          <article>
-            <span>01</span>
-            <h3>Measure every surface</h3>
-            <p>
-              Break irregular rooms into simple rectangles. Measure each area,
-              then add them together before allowing for waste.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Use the product label</h3>
-            <p>
-              Coverage and yield differ by brand, material, surface, and
-              installation method. Replace defaults with the label values.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Buy a practical buffer</h3>
-            <p>
-              A waste allowance covers cuts, breakage, pattern matching, and
-              future repairs. Complex layouts usually need more.
-            </p>
-          </article>
+        <div className="planning-guide-grid">
+          {guides.map((guide, index) => (
+            <a href={`/guides/${guide.slug}`} key={guide.slug}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{guide.shortTitle}</h3>
+                <p>{guide.description}</p>
+              </div>
+              <b aria-hidden="true">→</b>
+            </a>
+          ))}
         </div>
       </section>
 
